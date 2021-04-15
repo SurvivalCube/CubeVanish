@@ -1,0 +1,6 @@
+ name: CubeVanish
+ main: net.survivalcube.cubevanish.Cubevanish
+ version: 1.0_BETA
+ commands:
+   vanish:
+     description: Disappear!

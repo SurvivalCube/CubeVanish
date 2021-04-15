@@ -1,0 +1,7 @@
+name: CubeVanish
+version: ${project.version}
+main: net.survivalcube.cubevanish.Cubevanish
+api-version: 1.16
+authors: [ SlimeDiamond ]
+description: SurvivalCube's Vanish plugin
+website: https://survivalcube.net/
