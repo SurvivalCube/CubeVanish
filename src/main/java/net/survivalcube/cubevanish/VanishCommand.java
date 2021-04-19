@@ -9,6 +9,11 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
+import org.bukkit.scoreboard.Team;
 
 import java.awt.*;
 
@@ -33,6 +38,7 @@ public class VanishCommand implements CommandExecutor {
                         }
                     }
                     plugin.vanished.remove(p);
+                    //plugin.team.removePlayer(p);
                     //TagAPI.getInstance().setTag(p, "", "", 100);
                 } else if (!plugin.vanished.contains(p)) {
                     for (Player people : Bukkit.getOnlinePlayers()) {
@@ -43,7 +49,17 @@ public class VanishCommand implements CommandExecutor {
                         }
                     }
                     plugin.vanished.add(p);
-                    //p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GREEN + "You are vanished!")); // don't use this yet! ;D
+                    // p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GREEN + "You are vanished!"));
+                    Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() // thanks https://bukkit.org/members/drbowe.36753/
+                    {
+                        public void run()
+                        {
+                            if (plugin.vanished.contains(p))  p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GREEN + "You are vanished!"));
+                        }
+                    }, 20L, 20L);
+
+
+                    //plugin.team.addPlayer(p);
                     //TagAPI.getInstance().setTag(p, "§7[§aVANISHED§7] §f", "", 100);
                 }
             }
