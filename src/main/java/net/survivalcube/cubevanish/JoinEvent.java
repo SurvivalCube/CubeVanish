@@ -15,6 +15,7 @@ public class JoinEvent implements Listener {
     public void PlayerJoin(PlayerJoinEvent e){
         Player player = e.getPlayer();
         for (int i = 0; i < plugin.vanished.size(); i++){
+            if (player.hasPermission("survivalcube.vanish")) return;
             player.hidePlayer(plugin, plugin.vanished.get(i));
         }
     }

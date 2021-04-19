@@ -10,9 +10,13 @@ public class Cubevanish extends JavaPlugin {
 
 @Override
     public void onEnable() {
-    getLogger().info("Loading CubeVanish");
-    getCommand("vanish").setExecutor(new VanishCommand(this));
+    getLogger().info("Loading CubeVanish...");
+    this.getCommand("vanish").setExecutor(new VanishCommand(this));
     getServer().getPluginManager().registerEvents(new JoinEvent(this), this);
     getLogger().info("Loaded CubeVanish!");
+    }
+
+    public void onDisable() {
+    getLogger().info("CubeVanish disabled.");
     }
 }

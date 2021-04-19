@@ -2,6 +2,7 @@ package net.survivalcube.cubevanish;
 
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
+//import net.spigotmc.tagapi.api.TagAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -27,16 +28,23 @@ public class VanishCommand implements CommandExecutor {
                 if (plugin.vanished.contains(p)) {
                     for (Player people : Bukkit.getOnlinePlayers()) {
                         people.showPlayer(plugin, p);
+                        if (people.hasPermission("survivalcube.vanish")) {
+                            people.sendMessage(ChatColor.GREEN+p.getName()+" unvanished.");
+                        }
                     }
-                    p.sendMessage(ChatColor.GREEN+"You are now invisible to other players");
-                    plugin.vanished.add(p);
-                    p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GREEN+"You are vanished!"));
+                    plugin.vanished.remove(p);
+                    //TagAPI.getInstance().setTag(p, "", "", 100);
                 } else if (!plugin.vanished.contains(p)) {
                     for (Player people : Bukkit.getOnlinePlayers()) {
-                        people.hidePlayer(plugin, p);
+                        if (!people.hasPermission("survivalcube.vanish")) {
+                            people.hidePlayer(plugin, p);
+                        } else {
+                            people.sendMessage(ChatColor.GREEN+p.getName()+" vanished.");
+                        }
                     }
-                    p.sendMessage(ChatColor.GREEN+"You are now visible to other players");
-                    plugin.vanished.remove(p);
+                    plugin.vanished.add(p);
+                    //p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GREEN + "You are vanished!")); // don't use this yet! ;D
+                    //TagAPI.getInstance().setTag(p, "§7[§aVANISHED§7] §f", "", 100);
                 }
             }
         } else sender.sendMessage("Only players can vanish!");
