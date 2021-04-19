@@ -1,7 +1,7 @@
 image: maven:3.8.1-adoptopenjdk-8-openj9
 
 build:
-	script: mvn clean package
-	artifacts:
-		paths:
-			- target/
+    script: mvn clean package
+        artifacts:
+            paths:
+                - target/
