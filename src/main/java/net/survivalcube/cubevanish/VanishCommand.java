@@ -50,18 +50,11 @@ public class VanishCommand implements CommandExecutor {
                     }
                     plugin.vanished.add(p);
                     // p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GREEN + "You are vanished!"));
-                    Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() // thanks https://bukkit.org/members/drbowe.36753/
-                    {
-                        public void run()
-                        {
-                            if (plugin.vanished.contains(p)) p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GREEN + "You are vanished!"));
-                        }
-                    }, 20L, 20L);
-
-
                     //plugin.team.addPlayer(p);
                     //TagAPI.getInstance().setTag(p, "§7[§aVANISHED§7] §f", "", 100);
                 }
+            } else {
+                sender.sendMessage("Unknown command. Type \"/help\" for help.");
             }
         } else sender.sendMessage("Only players can vanish!");
 
