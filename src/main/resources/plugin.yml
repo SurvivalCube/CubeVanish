@@ -11,3 +11,7 @@ commands:
     description: Disappear!
     usage: /vanish
     aliases: [v, cv]
+  fancyvanish:
+    description: Disappear in style
+    usage: /fancyvanish <effect>
+    aliases: [fv, cfv]

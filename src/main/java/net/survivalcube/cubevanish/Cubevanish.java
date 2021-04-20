@@ -30,13 +30,13 @@ public class Cubevanish extends JavaPlugin {
     //{ board = manager.getNewScoreboard(); }
    // team.setPrefix("§7[§cV§7]§f ");
     this.getCommand("vanish").setExecutor(new VanishCommand(this));
+    this.getCommand("fancyvanish").setExecutor(new LightningVanish(this));
     getServer().getPluginManager().registerEvents(new JoinEvent(this), this);
     getLogger().info("Loaded CubeVanish!");
     }
 
     public void onDisable() {
     getLogger().info("Disabling CubeVanish");
-    // something will go here soon i swear
     getLogger().info("CubeVanish disabled.");
     }
 }
