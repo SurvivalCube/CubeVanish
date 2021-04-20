@@ -9,4 +9,4 @@ commands:
   vanish:
     description: Disappear!
     usage: /vanish
-
+    aliases: [v, cv]

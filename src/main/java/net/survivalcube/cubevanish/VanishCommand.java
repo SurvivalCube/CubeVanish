@@ -54,7 +54,7 @@ public class VanishCommand implements CommandExecutor {
                     {
                         public void run()
                         {
-                            if (plugin.vanished.contains(p))  p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GREEN + "You are vanished!"));
+                            if (plugin.vanished.contains(p)) p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GREEN + "You are vanished!"));
                         }
                     }, 20L, 20L);
 
