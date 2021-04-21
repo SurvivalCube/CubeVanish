@@ -15,9 +15,6 @@ import java.util.ArrayList;
 
 public class Cubevanish extends JavaPlugin {
     ArrayList<Player> vanished = new ArrayList<Player>();
-    //ScoreboardManager manager = Bukkit.getScoreboardManager();
-    //Scoreboard board;
-    //Team team;
 
     @Override
     public void onEnable() {
@@ -27,10 +24,9 @@ public class Cubevanish extends JavaPlugin {
                 if (vanished.contains(onlinep)) onlinep.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GREEN + "You are vanished!"));
             }
         }, 20L, 20L);
-    //{ board = manager.getNewScoreboard(); }
-   // team.setPrefix("§7[§cV§7]§f ");
     this.getCommand("vanish").setExecutor(new VanishCommand(this));
     this.getCommand("fancyvanish").setExecutor(new LightningVanish(this));
+    this.getCommand("vanishedplayers").setExecutor(new VanishedPlayersCommand(this));
     getServer().getPluginManager().registerEvents(new JoinEvent(this), this);
     getLogger().info("Loaded CubeVanish!");
     }
