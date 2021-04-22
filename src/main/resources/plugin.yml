@@ -19,3 +19,7 @@ commands:
     description: see all vanished players
     usage: /vanishedplayers
     aliases: [vp]
+  joinvanished:
+    description: toggle join vanished
+    usage: /joinvanished
+    aliases: [jv]

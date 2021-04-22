@@ -26,7 +26,7 @@ public class LightningVanish implements CommandExecutor {
             return true;
         }
         Player p = (Player) sender;
-        if (args[0].equalsIgnoreCase("lightning")) {
+        if (args[0].equalsIgnoreCase("lightning") || args[0].equalsIgnoreCase("l")) {
             p.getWorld().strikeLightningEffect(p.getLocation());
             //new VanishCommand(plugin);
             Bukkit.getServer().dispatchCommand(p, "vanish"); // well, it works :P

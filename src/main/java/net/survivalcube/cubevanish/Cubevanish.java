@@ -12,6 +12,7 @@ import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Cubevanish extends JavaPlugin {
     ArrayList<Player> vanished = new ArrayList<Player>();
@@ -19,14 +20,16 @@ public class Cubevanish extends JavaPlugin {
     @Override
     public void onEnable() {
     getLogger().info("Loading CubeVanish");
+    loadConfig();
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> {
             for (Player onlinep : Bukkit.getOnlinePlayers()) {
-                if (vanished.contains(onlinep)) onlinep.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GREEN + "You are vanished!"));
+                if (vanished.contains(onlinep) && Objects.equals(getConfig().get("display-actionbar"), true)) onlinep.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GREEN + "You are vanished!"));
             }
         }, 20L, 20L);
     this.getCommand("vanish").setExecutor(new VanishCommand(this));
     this.getCommand("fancyvanish").setExecutor(new LightningVanish(this));
     this.getCommand("vanishedplayers").setExecutor(new VanishedPlayersCommand(this));
+    this.getCommand("joinvanished").setExecutor(new JoinVanishedCommand(this));
     getServer().getPluginManager().registerEvents(new JoinEvent(this), this);
     getLogger().info("Loaded CubeVanish!");
     }
@@ -34,5 +37,9 @@ public class Cubevanish extends JavaPlugin {
     public void onDisable() {
     getLogger().info("Disabling CubeVanish");
     getLogger().info("CubeVanish disabled.");
+    }
+    public void loadConfig(){
+        getConfig().options().copyDefaults(true);
+        saveConfig();
     }
 }
