@@ -38,6 +38,7 @@ public class VanishCommand implements CommandExecutor {
                         }
                     }
                     plugin.vanished.remove(p);
+                    plugin.t.removeEntry(p.getName());
                     //plugin.team.removePlayer(p);
                     //TagAPI.getInstance().setTag(p, "", "", 100);
                 } else if (!plugin.vanished.contains(p)) {
@@ -49,6 +50,7 @@ public class VanishCommand implements CommandExecutor {
                         }
                     }
                     plugin.vanished.add(p);
+                    plugin.t.addEntry(p.getName());
                     // p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GREEN + "You are vanished!"));
                     //plugin.team.addPlayer(p);
                     //TagAPI.getInstance().setTag(p, "§7[§aVANISHED§7] §f", "", 100);
