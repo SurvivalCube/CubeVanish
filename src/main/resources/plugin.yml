@@ -23,3 +23,7 @@ commands:
     description: toggle join vanished
     usage: /joinvanished
     aliases: [jv]
+permissions:
+  survivalcube.vanish:
+    default: op
+    description: everything
