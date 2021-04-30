@@ -18,6 +18,9 @@ public class LeaveEvent implements Listener {
         if (plugin.t.getEntries().contains(p.getName())) {
             plugin.t.removeEntry(p.getName());
         }
+        if (plugin.vanished.contains(p)){
+            plugin.vanished.remove(p);
+        }
     }
 
 
